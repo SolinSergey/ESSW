@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Расписание уроков</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Расписание уроков</h1>
+    <br>
+    <div class="alert alert-danger" role="alert">
+        Вам еще не назначены уроки!
+    </div>
+    <button class="btn btn-primary" onclick="location.href = '/teacher/myprofile';">Вернуться</button>
+</div>
+</body>
+</html>

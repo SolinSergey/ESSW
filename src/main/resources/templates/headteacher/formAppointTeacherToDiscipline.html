@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Назначить дисциплину преподавателю</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Назначить дисциплину преподавателю</h1>
+    <br>
+    <form th:action="@{/headteacher/setteacherdiscipline}" th:object="${classTitle}" method="post">
+        <h5>Выберите преподавателя из списка:</h5>
+        <select class="form-select" th:field="${appointdisciplinforteacher.teacherId}">
+            <option th:each="teacher:${teacherList}" th:value="${teacher.getId()}"
+                    th:text="${teacher.lastName}+'&nbsp'+${teacher.firstName}">
+            </option>
+        </select>
+        <br>
+        <h5>Выберите дисциплину из списка:</h5>
+        <select class="form-select" th:field="${appointdisciplinforteacher.disciplinId}">
+            <option th:each="discipline:${disciplineList}" th:value="${discipline.getId()}"
+                    th:text="${discipline.getTitle()}">
+            </option>
+        </select>
+        <br>
+        <input name="submit" type="submit" class="btn btn-primary" value="Создать"/>
+    </form>
+</div>
+</body>
+</html>

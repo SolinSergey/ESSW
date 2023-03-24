@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Список классов</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Список классов</h1>
+    <br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Класс</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        <tr th:each="ctl:${classTitleList}">
+            <td th:text="${ctl.getTitle()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

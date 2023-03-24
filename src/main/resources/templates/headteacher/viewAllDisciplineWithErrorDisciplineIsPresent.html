@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Список доступных дисциплин/Добавление</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Список доступных дисциплин/Добавление</h1>
+    <br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Наименование дисциплины</th>
+        </tr>
+        </thead>
+        <br>
+        <div class="alert alert-danger" role="alert">
+            Введенное имя дисциплины уже существует. Повторите ввод
+        </div>
+        <br>
+        <form action="#" th:action="@{/headteacher/adddiscipline}" th:object="${discipline}" method="post">
+            <input class="form-control form-control-lg" type="text" placeholder="Введите название новой дисциплины"
+                   aria-label=".form-control-lg example" th:field="*{title}">
+            <div style="color: red" th:errors="*{title}" class="error"/>
+            <br>
+            <input name="submit" type="submit" class="btn btn-primary" value="Создать"/>
+        </form>
+        <br>
+        <hr>
+        <tbody class="table-group-divider">
+        <tr th:each="d:${disciplineList}">
+            <td th:text="${d.getTitle()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

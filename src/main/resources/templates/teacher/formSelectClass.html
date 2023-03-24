@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Выбор класса</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Выберите класс</h1>
+    <br>
+    <table>
+        <tr>
+            <td>
+                <form th:action="@{/teacher/selectClassForFormGrade}" th:object="${classNumber}" method="post">
+                    <select class="form-select" th:field="${classNumber.numberClass}">
+                        <option th:each="classTitle:${classTitleList}" th:value="${classTitle.id}"
+                                th:text="${classTitle.getTitle()}">
+                        </option>
+                    </select>
+                    <br>
+                    <input name="submit" type="submit" class="btn btn-primary" value="Выбрать"/>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br><br>
+</div>
+</body>
+</html>

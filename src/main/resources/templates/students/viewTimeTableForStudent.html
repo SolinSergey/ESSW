@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Расписание уроков</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Расписание уроков</h1>
+    <br>
+    <form th:action="@{/student/selectday}" th:object="${day}" method="post">
+        <select class="form-select" aria-label="Default select example" th:field="${day.numberDay}">
+            <option selected value="${day.numberDay}"></option>
+            <option value="0" class="h5">Вся неделя</option>
+            <option value="1">Понедельник</option>
+            <option value="2">Вторник</option>
+            <option value="3">Среда</option>
+            <option value="4">Четверг</option>
+            <option value="5">Пятница</option>
+            <option value="6">Суббота</option>
+            <option value="7">Воскресенье</option>
+        </select>
+        <br>
+        <input name="submit" type="submit" class="btn btn-primary" value="Выбрать"/>
+        <br><br>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">День недели</th>
+                <th scope="col">Номер урока</th>
+                <th scope="col">Начало урока</th>
+                <th scope="col">Конец урока</th>
+                <th scope="col">Дисциплина</th>
+                <th scope="col">Преподаватель</th>
+                <th scope="col">Кабинет</th>
+            </tr>
+            </thead>
+            <tbody class="table-group-divider">
+            <tr th:each="tT:${timeTable}">
+                <td th:text="${tT.dayTitle}"></td>
+                <td th:text="${tT.numberLesson}"></td>
+                <td th:text="${tT.timeStartLesson}"></td>
+                <td th:text="${tT.timeFinishLesson}"></td>
+                <td th:text="${tT.disciplinTitle}"></td>
+                <td th:text="${tT.teacherLastName}+'&nbsp'+${tT.teacherFirstName}"></td>
+                <td th:text="${tT.lecturesHallNumber}+'&nbsp'+${tT.lecturesHallTitle}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+</body>
+</html>

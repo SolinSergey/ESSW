@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Мой профиль</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Мой профиль</h1>
+    <br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Фамилия Имя</td>
+            <td th:text="${studentProfile.lastName}+'&nbsp'+${studentProfile.firstName}"></td>
+        </tr>
+        <tr>
+            <td>Учебный класс</td>
+            <td th:text="${studentProfile.classTitle}"></td>
+        </tr>
+        <tr>
+            <td>Классный руководитель</td>
+            <td th:text="${studentProfile.teacherSecondName}+'&nbsp'+${studentProfile.teacherFirstName}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

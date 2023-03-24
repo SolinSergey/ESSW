@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Мои оценки</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Мои оценки</h1>
+    <br>
+    <form th:action="@{/student/mygrade}" th:object="${filterData}" method="post">
+        <label for="startDate">Начало</label>
+        <br>
+        <input id="startDate" class="form-control" type="date" th:field="${filterData.startDate}"/>
+        <br>
+        <label for="startDate">Конец</label>
+        <input id="startDate" class="form-control" type="date" th:field="${filterData.endDate}"/>
+        <br>
+        <input name="submit" type="submit" class="btn btn-primary" value="Показать"/>
+    </form>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Класс</th>
+            <th scope="col">Дата</th>
+            <th scope="col">Дисциплина</th>
+            <th scope="col">Оценка</th>
+            <th scope="col">Преподаватель</th>
+            <th scope="col">Комментарий</th>
+        </tr>
+        </thead>
+        <br>
+        <tbody class="table-group-divider">
+        <tr th:each="gL:${gradeList}">
+            <td th:text="${gL.classTitle}"></td>
+            <td th:text="${gL.dateGrade}"></td>
+            <td th:text="${gL.disciplinTitle}"></td>
+            <td th:text="${gL.grade}"></td>
+            <td th:text="${gL.teacherFirstName}+'&nbsp'+${gL.teacherSecondName}"></td>
+            <td th:text="${gL.description}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

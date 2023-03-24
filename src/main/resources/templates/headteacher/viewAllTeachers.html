@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Список преподавателей школы</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Список преподавателей школы</h1>
+    <br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Дисциплина</th>
+            <th scope="col">Классное руководство</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        <tr th:each="tL:${teacherList}">
+            <td th:text="${tL.getLastName()}"></td>
+            <td th:text="${tL.getFirstName()}"></td>
+            <td th:text="${tL.getDisciplinTitle()}"></td>
+            <td th:text="${tL.getClassTitle()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

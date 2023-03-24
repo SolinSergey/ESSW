@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Назначить преподавателю класс</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Назначить преподавателю класс</h1>
+    <br>
+    <div class="alert alert-danger" role="alert">
+        Невозможно прикрепить выбранному учителю класс, так как ему не назначена дисциплина!!!
+    </div>
+    <br>
+    <form th:action="@{/headteacher/setteacherclassgroup}" th:object="${classTitle}" method="post">
+        <h5>Выберите учителя из списка:</h5>
+        <select class="form-select" th:field="${appointTeacherToClass.teacherId}">
+            <option th:each="teacher:${teacherList}" th:value="${teacher.getId()}"
+                    th:text="${teacher.lastName}+'&nbsp'+${teacher.firstName}">
+            </option>
+        </select>
+        <br><br>
+        <h5>Выберите класс из списка:</h5>
+        <select class="form-select" th:field="${appointTeacherToClass.classTitleId}">
+            <option th:each="classTitle:${classTitleList}" th:value="${classTitle.getId()}"
+                    th:text="${classTitle.getTitle()}">
+            </option>
+        </select>
+        <br><br>
+        <input name="submit" type="submit" class="btn btn-primary" value="Создать"/>
+    </form>
+</div>
+</body>
+</html>

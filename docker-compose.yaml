@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+#  deploy:
+#    depends_on:
+#      - postgres
+#    container_name: deployESSWProject
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    ports:
+#      - "9090:9090"
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://essw-db:5432/essw-db
+#      - SPRING_DATASOURCE_USERNAME=postgres
+#      - SPRING_DATASOURCE_PASSWORD=123
+  postgres:
+    container_name: essw-db
+    image: postgres
+    environment:
+      POSTGRES_DB: "essw-db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "123"
+    ports:
+      - "5454:5432"
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: '1G'
+    networks:
+      - postgres
+
+networks:
+  postgres:
+    driver: bridge
